@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "duLinkedList.h"
+#include "../head/duLinkedList.h"
 
-void PrintMenu(void);			// ´òÓ¡²Ëµ¥
-void CreateList(DuLinkedList * L);	// ´´½¨Á´±í
-void InsertBefore(DuLinkedList L);	// ÔÚÑ¡ÖĞµÄÔªËØÖ®Ç°²åÈë
-void InesrtAfter(DuLinkedList L);	// ÔÚÑ¡ÖĞµÄÔªËØÖ®ºó²åÈë
-void Delete(DuLinkedList L);		// É¾³ı²Ù×÷
-void Destory(DuLinkedList * L);		// ÖÃ¿ÕÁ´±í
-// ×Ô¼ºµÄÊäÈëº¯Êı
+void PrintMenu(void);			// æ‰“å°èœå•
+void CreateList(DuLinkedList * L);	// åˆ›å»ºé“¾è¡¨
+void InsertBefore(DuLinkedList L);	// åœ¨é€‰ä¸­çš„å…ƒç´ ä¹‹å‰æ’å…¥
+void InesrtAfter(DuLinkedList L);	// åœ¨é€‰ä¸­çš„å…ƒç´ ä¹‹åæ’å…¥
+void Delete(DuLinkedList L);		// åˆ é™¤æ“ä½œ
+void Destory(DuLinkedList * L);		// ç½®ç©ºé“¾è¡¨
+// è‡ªå·±çš„è¾“å…¥å‡½æ•°
 void s_gets(char * str,int lim);
 Status num_gets(int * num);
 void InputPositiveNum(int * num);
@@ -49,7 +49,7 @@ int main(void)
 				Destory(&List);
 				break;
 			default:
-				puts("ÇëÊäÈëÕıÈ·µÄÑ¡ÔñĞòºÅ£¡");
+				puts("è¯·è¾“å…¥æ­£ç¡®çš„é€‰æ‹©åºå·ï¼");
 				break;
 		}
 		if(++i == 8)
@@ -67,23 +67,23 @@ int main(void)
 
 }
 
-// ´òÓ¡²Ëµ¥
+// æ‰“å°èœå•
 void PrintMenu(void)
 {
-	printf("\t\t****Ë«ÏòÁ´±íADT²âÊÔ****");
-	printf("\n1.Õû±í´´½¨\n2.±éÀú²Ù×÷ \n3.ÔÚÑ¡ÖĞµÄÔªËØÖ®Ç°²åÈë");
-	printf("\n4.ÔÚÑ¡ÖĞµÄÔªËØÖ®ºó²åÈë\n5.É¾³ı²Ù×÷\n6.ÖÃ¿ÕÁ´±í");
-	printf("\n0.ÍË³ö\nÇëÑ¡ÔñÄãµÄ²Ù×÷\n");
+	printf("\t\t****åŒå‘é“¾è¡¨ADTæµ‹è¯•****");
+	printf("\n1.æ•´è¡¨åˆ›å»º\n2.éå†æ“ä½œ \n3.åœ¨é€‰ä¸­çš„å…ƒç´ ä¹‹å‰æ’å…¥");
+	printf("\n4.åœ¨é€‰ä¸­çš„å…ƒç´ ä¹‹åæ’å…¥\n5.åˆ é™¤æ“ä½œ\n6.ç½®ç©ºé“¾è¡¨");
+	printf("\n0.é€€å‡º\nè¯·é€‰æ‹©ä½ çš„æ“ä½œ\n");
 }
 
-// ´´½¨Á´±í
+// åˆ›å»ºé“¾è¡¨
 void CreateList(DuLinkedList * L)
 {
 	if(NULL != (*L))
 	{
 		if(NULL != (*L)->next)
 		{
-			puts("´ËÁ´±íÒÑ´æÔÚ£¬ÇëÏÈÇå¿ÕÔÙ´´½¨£¡");
+			puts("æ­¤é“¾è¡¨å·²å­˜åœ¨ï¼Œè¯·å…ˆæ¸…ç©ºå†åˆ›å»ºï¼");
 			return;
 		}
 	}
@@ -96,7 +96,7 @@ void CreateList(DuLinkedList * L)
 	}
 	int input;
 	DuLinkedList temp,p;
-	printf("ÇëÊäÈëÁ´±íÔªËØ¸öÊı£º");
+	printf("è¯·è¾“å…¥é“¾è¡¨å…ƒç´ ä¸ªæ•°ï¼š");
 	InputPositiveNum(&input);
 	p = (*L);
 	for(int i = 0;i < input;i++)
@@ -112,14 +112,14 @@ void CreateList(DuLinkedList * L)
 		temp->next = NULL;
 		temp = NULL;
 	}
-	puts("´´½¨Á´±í³É¹¦£¡");
+	puts("åˆ›å»ºé“¾è¡¨æˆåŠŸï¼");
 }
 
-void InsertBefore(DuLinkedList L)	// ÔÚÑ¡ÖĞµÄÔªËØÖ®Ç°²åÈë
+void InsertBefore(DuLinkedList L)	// åœ¨é€‰ä¸­çš„å…ƒç´ ä¹‹å‰æ’å…¥
 {
 	int num;
 	DuLinkedList node_,p;
-	printf("ÇëÊäÈëÒª²åÈëµÚ¼¸¸öÎ»ÖÃµÄÇ°Ãæ£º");
+	printf("è¯·è¾“å…¥è¦æ’å…¥ç¬¬å‡ ä¸ªä½ç½®çš„å‰é¢ï¼š");
 	node_ = L;
 	InputPositiveNum(&num);
 	for(int i = 0;i < num;i++)
@@ -134,25 +134,25 @@ void InsertBefore(DuLinkedList L)	// ÔÚÑ¡ÖĞµÄÔªËØÖ®Ç°²åÈë
 	{
 		exit(0);
 	}
-	printf("ÇëÊäÈëÄãÒª²åÈëµÄÊı¾İ£º");
+	printf("è¯·è¾“å…¥ä½ è¦æ’å…¥çš„æ•°æ®ï¼š");
 	InputPositiveNum(&num);
 	p->data = num;
 	if(!InsertBeforeList_DuL(node_,p))
 	{
-		puts("´Ë½Úµã²»´æÔÚ£¡");
+		puts("æ­¤èŠ‚ç‚¹ä¸å­˜åœ¨ï¼");
 		free(p);
 	}
 	else
 	{
-		puts("²åÈë³É¹¦£¡");
+		puts("æ’å…¥æˆåŠŸï¼");
 	}
 }
 
-void InesrtAfter(DuLinkedList L)	// ÔÚÑ¡ÖĞµÄÔªËØÖ®ºó²åÈë
+void InesrtAfter(DuLinkedList L)	// åœ¨é€‰ä¸­çš„å…ƒç´ ä¹‹åæ’å…¥
 {
 	int num;
 	DuLinkedList node_,p;
-	printf("ÇëÊäÈëÒª²åÈëµÚ¼¸¸öÎ»ÖÃµÄºóÃæ£º");
+	printf("è¯·è¾“å…¥è¦æ’å…¥ç¬¬å‡ ä¸ªä½ç½®çš„åé¢ï¼š");
 	node_ = L;
 	InputPositiveNum(&num);
 	for(int i = 0;i < num;i++)
@@ -167,26 +167,26 @@ void InesrtAfter(DuLinkedList L)	// ÔÚÑ¡ÖĞµÄÔªËØÖ®ºó²åÈë
 	{
 		exit(0);
 	}
-	printf("ÇëÊäÈëÄãÒª²åÈëµÄÊı¾İ£º");
+	printf("è¯·è¾“å…¥ä½ è¦æ’å…¥çš„æ•°æ®ï¼š");
 	InputPositiveNum(&num);
 	p->data = num;
 	if(!InsertAfterList_DuL(node_,p))
 	{
-		puts("´Ë½Úµã²»´æÔÚ£¡");
+		puts("æ­¤èŠ‚ç‚¹ä¸å­˜åœ¨ï¼");
 		free(p);
 	}
 	else
 	{
-		puts("²åÈë³É¹¦£¡");
+		puts("æ’å…¥æˆåŠŸï¼");
 	}
 }
 
-void Delete(DuLinkedList L)		// É¾³ı²Ù×÷
+void Delete(DuLinkedList L)		// åˆ é™¤æ“ä½œ
 {
 	int num,e;
 	DuLinkedList p;
 	p = L;
-	printf("ÇëÊäÈëÒªÉ¾³ıµÚ¼¸¸öÎ»ÖÃµÄ½Úµã£º");
+	printf("è¯·è¾“å…¥è¦åˆ é™¤ç¬¬å‡ ä¸ªä½ç½®çš„èŠ‚ç‚¹ï¼š");
 	InputPositiveNum(&num);
 	for(int i = 0;i < num-1;i++)
 	{
@@ -198,26 +198,26 @@ void Delete(DuLinkedList L)		// É¾³ı²Ù×÷
 	}
 	if(!DeleteList_DuL(p,&e))
 	{
-		puts("ÒªÉ¾³ıµÄ½Úµã²»´æÔÚ");
+		puts("è¦åˆ é™¤çš„èŠ‚ç‚¹ä¸å­˜åœ¨");
 	}
 	else
 	{
-		printf("É¾³ı³É¹¦ £¡ÄãÉ¾³ıµÄÊı¾İÊÇ%d\n",e);
+		printf("åˆ é™¤æˆåŠŸ ï¼ä½ åˆ é™¤çš„æ•°æ®æ˜¯%d\n",e);
 	}
 }
 
-void Destory(DuLinkedList * L)		// ÖÃ¿ÕÁ´±í
+void Destory(DuLinkedList * L)		// ç½®ç©ºé“¾è¡¨
 {
 	if(NULL == (*L) || NULL == (*L)->next)
-		puts("Á´±íÎª¿Õ!");
+		puts("é“¾è¡¨ä¸ºç©º!");
 	else
 	{
 		DestroyList_DuL(L);
-		puts("ÖÃ¿Õ³É¹¦£¡");
+		puts("ç½®ç©ºæˆåŠŸï¼");
 	}
 }
 
-// ×Ô¼ºµÄÊäÈëº¯Êı
+// è‡ªå·±çš„è¾“å…¥å‡½æ•°
 void s_gets(char * str,int lim)
 {
 	char * ret_val;
@@ -256,7 +256,7 @@ Status num_gets(int * num)
 		}
 		else
 		{
-			puts("ÊäÈëÓĞÎó£¡");
+			puts("è¾“å…¥æœ‰è¯¯ï¼");
 			return ERROR;
 		}
 	}
@@ -270,16 +270,16 @@ void InputPositiveNum(int * num)
 	while(!num_gets(num) || (*num) > 99999999)
 	{
 		if((*num) > 99999999)
-			puts("ÊäÈëÊı¾İ¹ı´ó");
+			puts("è¾“å…¥æ•°æ®è¿‡å¤§");
 		continue;
 	}
 	while((*num) < 1)
 	{
-		puts("ÇëÊäÈëÕıÕûÊı£¡");
+		puts("è¯·è¾“å…¥æ­£æ•´æ•°ï¼");
 		while(!num_gets(num) || (*num) > 99999999)
 		{
 			if((*num) > 99999999)
-				puts("ÊäÈëÊı¾İ¹ı´ó");
+				puts("è¾“å…¥æ•°æ®è¿‡å¤§");
 			continue;
 		}
 	}
@@ -288,7 +288,7 @@ void InputPositiveNum(int * num)
 void Exit()
 {
 	system("pause");
-	puts("\t\t\t¸ĞĞ»Ê¹ÓÃ£¡\n\n\n");
+	puts("\t\t\tæ„Ÿè°¢ä½¿ç”¨ï¼\n\n\n");
 	system("pause");
 	system("cls");
 	for (float y = 1.5; y > -1.5; y -= 0.1)
