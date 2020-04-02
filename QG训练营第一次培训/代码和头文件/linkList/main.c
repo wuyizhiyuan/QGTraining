@@ -1,21 +1,21 @@
-#include "linkedList.h"
+#include "../head/linkedList.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-//ÂëÕâÃ´¶à×ÔÓé×ÔÀÖ
-void PrintMenu(void);			// ´òÓ¡²Ëµ¥
-void CreateList(LinkedList * L);	// 1.´´½¨Á´±í
-void Traverse(LinkedList L);		// 2.±éÀú²Ù×÷
-void Insert(LinkedList L);		// 3.²åÈë²Ù×÷
-void Delete(LinkedList L);		// 4.É¾³ı²Ù×÷
-void Search(LinkedList L);		// 5.²éÑ¯Ä³ÊıÊÇ·ñÔÚÁ´±íÖĞ
-void Destory(LinkedList L);		// 6.ÖÃ¿ÕÁ´±í
-void Reverse(LinkedList * L);		// 7.·´×ªÁ´±í
-void FindMid(LinkedList * L);		// 8.Ñ°ÕÒÖĞ¼ä½Úµã
-void AddCircle(LinkedList L);		// 9.¸øÁ´±í¼Ó»·
-LNode * SearchCircleNode(LinkedList L);	// ÕÒµ½³É»·µÄÄÇ¸öµã
-// ×Ô¼ºµÄÊäÈëº¯Êı
+//ç è¿™ä¹ˆå¤šè‡ªå¨±è‡ªä¹
+void PrintMenu(void);			// æ‰“å°èœå•
+void CreateList(LinkedList * L);	// 1.åˆ›å»ºé“¾è¡¨
+void Traverse(LinkedList L);		// 2.éå†æ“ä½œ
+void Insert(LinkedList L);		// 3.æ’å…¥æ“ä½œ
+void Delete(LinkedList L);		// 4.åˆ é™¤æ“ä½œ
+void Search(LinkedList L);		// 5.æŸ¥è¯¢æŸæ•°æ˜¯å¦åœ¨é“¾è¡¨ä¸­
+void Destory(LinkedList L);		// 6.ç½®ç©ºé“¾è¡¨
+void Reverse(LinkedList * L);		// 7.åè½¬é“¾è¡¨
+void FindMid(LinkedList * L);		// 8.å¯»æ‰¾ä¸­é—´èŠ‚ç‚¹
+void AddCircle(LinkedList L);		// 9.ç»™é“¾è¡¨åŠ ç¯
+LNode * SearchCircleNode(LinkedList L);	// æ‰¾åˆ°æˆç¯çš„é‚£ä¸ªç‚¹
+// è‡ªå·±çš„è¾“å…¥å‡½æ•°
 void s_gets(char * str,int lim);
 Status num_gets(int * num);
 void InputPositiveNum(int * num);
@@ -63,22 +63,22 @@ int main(void)
 				break;
 			case 10:
 				if(!IsLoopList(List))
-					puts("´ËÁ´±íÎŞ»·£¡");
+					puts("æ­¤é“¾è¡¨æ— ç¯ï¼");
 				else
-					puts("´ËÁ´±í´æÔÚ»·£¡");
+					puts("æ­¤é“¾è¡¨å­˜åœ¨ç¯ï¼");
 				break;
 			case 11:
 				if(!IsLoopList(List))
 				{
 					List = ReverseEvenList(&List);
 					if(List)
-						puts("ÆæÅ¼·´×ª³É¹¦£¡");
+						puts("å¥‡å¶åè½¬æˆåŠŸï¼");
 				}
 				else
-					puts("´ËÁ´±í´æÔÚ»·,²»¿ÉÆæÅ¼·­×ª£¡");
+					puts("æ­¤é“¾è¡¨å­˜åœ¨ç¯,ä¸å¯å¥‡å¶ç¿»è½¬ï¼");
 				break;
 			default:
-				puts("ÇëÊäÈëÕıÈ·µÄÑ¡ÔñĞòºÅ£¡");
+				puts("è¯·è¾“å…¥æ­£ç¡®çš„é€‰æ‹©åºå·ï¼");
 				break;
 		}
 		if(++i == 8)
@@ -95,24 +95,24 @@ int main(void)
 	return 0;
 }
 
-// ´òÓ¡²Ëµ¥
+// æ‰“å°èœå•
 void PrintMenu(void)
 {
-	printf("\t\t****Á´±íADT²âÊÔ****");
-	printf("\n1.Õû±í´´½¨\n2.±éÀú²Ù×÷ \n3.²åÈë²Ù×÷");
-	printf("\n4.É¾³ı²Ù×÷\n5.²éÑ¯Ä³ÊıÊÇ·ñÔÚÁ´±íÖĞ\n6.ÖÃ¿ÕÁ´±í");
-	printf("\n7.Á´±í·´×ªÄæĞò\n8.ÕÒµ½Á´±íµÄÖĞ¼ä½áµã\n9.¸øÁ´±í¼Ó»·\n10.ÅĞ¶ÏÁ´±íÊÇ·ñÓĞ»·\n11.ÆæÅ¼·´×ª");
-	printf("\n0.ÍË³ö\nÇëÑ¡ÔñÄãµÄ²Ù×÷\n");
+	printf("\t\t****é“¾è¡¨ADTæµ‹è¯•****");
+	printf("\n1.æ•´è¡¨åˆ›å»º\n2.éå†æ“ä½œ \n3.æ’å…¥æ“ä½œ");
+	printf("\n4.åˆ é™¤æ“ä½œ\n5.æŸ¥è¯¢æŸæ•°æ˜¯å¦åœ¨é“¾è¡¨ä¸­\n6.ç½®ç©ºé“¾è¡¨");
+	printf("\n7.é“¾è¡¨åè½¬é€†åº\n8.æ‰¾åˆ°é“¾è¡¨çš„ä¸­é—´ç»“ç‚¹\n9.ç»™é“¾è¡¨åŠ ç¯\n10.åˆ¤æ–­é“¾è¡¨æ˜¯å¦æœ‰ç¯\n11.å¥‡å¶åè½¬");
+	printf("\n0.é€€å‡º\nè¯·é€‰æ‹©ä½ çš„æ“ä½œ\n");
 }
 
-// ´´½¨Á´±í
+// åˆ›å»ºé“¾è¡¨
 void CreateList(LinkedList * L)
 {
 	if(NULL != (*L))
 	{
 		if(NULL != (*L)->next)
 		{
-			puts("´ËÁ´±íÒÑ´æÔÚ£¬ÇëÏÈÇå¿ÕÔÙ´´½¨£¡");
+			puts("æ­¤é“¾è¡¨å·²å­˜åœ¨ï¼Œè¯·å…ˆæ¸…ç©ºå†åˆ›å»ºï¼");
 			return;
 		}
 	}
@@ -125,7 +125,7 @@ void CreateList(LinkedList * L)
 	}
 	int input;
 	LinkedList temp;
-	printf("ÇëÊäÈëÁ´±íÔªËØ¸öÊı£º");
+	printf("è¯·è¾“å…¥é“¾è¡¨å…ƒç´ ä¸ªæ•°ï¼š");
 	InputPositiveNum(&input);
 	LinkedList p;
 	p = (*L);
@@ -140,10 +140,10 @@ void CreateList(LinkedList * L)
 		p = temp;
 		temp = NULL;
 	}
-	puts("´´½¨Á´±í³É¹¦£¡");
+	puts("åˆ›å»ºé“¾è¡¨æˆåŠŸï¼");
 }
 
-// ±éÀú²Ù×÷
+// éå†æ“ä½œ
 void Traverse(LinkedList L)
 {
 	if(IsLoopList(L))
@@ -171,12 +171,12 @@ void Traverse(LinkedList L)
 	}
 }
 
-// ²åÈë²Ù×÷
+// æ’å…¥æ“ä½œ
 void Insert(LinkedList L)
 {
 	int num;
 	LinkedList node_,p;
-	printf("ÇëÊäÈëÒª²åÈëµÚ¼¸¸öÎ»ÖÃµÄºóÃæ£º");
+	printf("è¯·è¾“å…¥è¦æ’å…¥ç¬¬å‡ ä¸ªä½ç½®çš„åé¢ï¼š");
 	node_ = L;
 	InputPositiveNum(&num);
 	for(int i = 0;i < num;i++)
@@ -191,27 +191,27 @@ void Insert(LinkedList L)
 	{
 		exit(0);
 	}
-	printf("ÇëÊäÈëÄãÒª²åÈëµÄÊı¾İ£º");
+	printf("è¯·è¾“å…¥ä½ è¦æ’å…¥çš„æ•°æ®ï¼š");
 	InputPositiveNum(&num);
 	p->data = num;
 	if(!InsertList(node_,p))
 	{
-		puts("´Ë½Úµã²»´æÔÚ£¡");
+		puts("æ­¤èŠ‚ç‚¹ä¸å­˜åœ¨ï¼");
 		free(p);
 	}
 	else
 	{
-		puts("²åÈë³É¹¦£¡");
+		puts("æ’å…¥æˆåŠŸï¼");
 	}
 }
 
-// É¾³ı²Ù×÷
+// åˆ é™¤æ“ä½œ
 void Delete(LinkedList L)
 {
 	int num,e;
 	LinkedList p;
 	p = L;
-	printf("ÇëÊäÈëÒªÉ¾³ıµÚ¼¸¸öÎ»ÖÃµÄ½Úµã£º");
+	printf("è¯·è¾“å…¥è¦åˆ é™¤ç¬¬å‡ ä¸ªä½ç½®çš„èŠ‚ç‚¹ï¼š");
 	InputPositiveNum(&num);
 	for(int i = 0;i < num-1;i++)
 	{
@@ -223,32 +223,32 @@ void Delete(LinkedList L)
 	}
 	if(!DeleteList(p,&e))
 	{
-		puts("ÒªÉ¾³ıµÄ½Úµã²»´æÔÚ");
+		puts("è¦åˆ é™¤çš„èŠ‚ç‚¹ä¸å­˜åœ¨");
 	}
 	else
 	{
-		printf("É¾³ı³É¹¦ £¡ÄãÉ¾³ıµÄÊı¾İÊÇ%d\n",e);
+		printf("åˆ é™¤æˆåŠŸ ï¼ä½ åˆ é™¤çš„æ•°æ®æ˜¯%d\n",e);
 	}
 
 }
 
-// ²éÑ¯Ä³ÊıÊÇ·ñÔÚÁ´±íÖĞ
+// æŸ¥è¯¢æŸæ•°æ˜¯å¦åœ¨é“¾è¡¨ä¸­
 void Search(LinkedList L)
 {
 	int num;
-	printf("ÇëÊäÈëÄãÒª²éÕÒµÄÊı¾İ£º");
+	printf("è¯·è¾“å…¥ä½ è¦æŸ¥æ‰¾çš„æ•°æ®ï¼š");
 	InputPositiveNum(&num);
 	if(SearchList(L,num))
 	{
-		printf("´ËÁ´±íÀï´æÔÚ%d!\n",num);
+		printf("æ­¤é“¾è¡¨é‡Œå­˜åœ¨%d!\n",num);
 	}
 	else
 	{
-		printf("¸ÃÁ´±íÎŞ´ËÊı¾İ£¡\n");
+		printf("è¯¥é“¾è¡¨æ— æ­¤æ•°æ®ï¼\n");
 	}
 }
 
-// ÖÃ¿ÕÁ´±í
+// ç½®ç©ºé“¾è¡¨
 void Destory(LinkedList L)
 {
 	if(IsLoopList(L))
@@ -276,42 +276,42 @@ void Destory(LinkedList L)
 	{
 		DestroyList(&L);
 	}
-	puts("ÖÃ¿Õ³É¹¦£¡");
+	puts("ç½®ç©ºæˆåŠŸï¼");
 }
 
-// ·´×ªÁ´±í
+// åè½¬é“¾è¡¨
 void Reverse(LinkedList * L)
 {
 	if(IsLoopList(*L))
-		puts("¸ÃÁ´±íÓĞ»·£¬ÎŞ·¨·´×ª£¡");
+		puts("è¯¥é“¾è¡¨æœ‰ç¯ï¼Œæ— æ³•åè½¬ï¼");
 	else
 	{
 		if(ReverseList(L))
 		{
-			puts("·´×ª³É¹¦£¡");
+			puts("åè½¬æˆåŠŸï¼");
 		}
 		else
 		{
-			puts("·´×ªÊ§°Ü£¡");
+			puts("åè½¬å¤±è´¥ï¼");
 		}
 	}
 }
 
-// Ñ°ÕÒÖĞ¼ä½Úµã
+// å¯»æ‰¾ä¸­é—´èŠ‚ç‚¹
 void FindMid(LinkedList * L)
 {
 	LNode * p;
 	if(IsLoopList(*L))
-		puts("¸ÃÁ´±íÓĞ»·£¬Ã»ÓĞÖĞ¼ä½Úµã£¡");
+		puts("è¯¥é“¾è¡¨æœ‰ç¯ï¼Œæ²¡æœ‰ä¸­é—´èŠ‚ç‚¹ï¼");
 	else
 	{
 		p = FindMidNode(L);
 		if(p)
-			printf("ÖĞ¼ä½ÚµãÎª%d\n",p->data);
+			printf("ä¸­é—´èŠ‚ç‚¹ä¸º%d\n",p->data);
 	}
 }
 
-// ¸øÁ´±í¼Ó»·
+// ç»™é“¾è¡¨åŠ ç¯
 void AddCircle(LinkedList L)
 {
 	if(NULL == L)
@@ -321,7 +321,7 @@ void AddCircle(LinkedList L)
 	}
 	else if(NULL == L->next)
 	{
-		puts("¸ÃÁ´±íÎª¿Õ±í£¡");
+		puts("è¯¥é“¾è¡¨ä¸ºç©ºè¡¨ï¼");
 		return;
 	}
 	int num;
@@ -329,13 +329,13 @@ void AddCircle(LinkedList L)
 	if(!IsLoopList(L))
 	{
 		q = p = L;
-		printf("ÇëÊäÈëÄ©Î²Á´±íµÄÏÂÒ»¸öÖ¸ÏòµÚÁ´±íµÚ¼¸¸öÎ»ÖÃ£º");
+		printf("è¯·è¾“å…¥æœ«å°¾é“¾è¡¨çš„ä¸‹ä¸€ä¸ªæŒ‡å‘ç¬¬é“¾è¡¨ç¬¬å‡ ä¸ªä½ç½®ï¼š");
 		InputPositiveNum(&num);
 		for(int i = 0;i < num;i++)
 		{
 			if(NULL == p)
 			{
-				puts("²»´æÔÚ´ËÎ»ÖÃ");
+				puts("ä¸å­˜åœ¨æ­¤ä½ç½®");
 			}
 			p = p->next;
 		}
@@ -346,16 +346,16 @@ void AddCircle(LinkedList L)
 				q = q->next;
 			}
 			q->next = p;
-			puts("¼Ó»·³É¹¦!");
+			puts("åŠ ç¯æˆåŠŸ!");
 		}
 	}
 	else
 	{
-		puts("¸ÃÁ´±íÓĞ»·£¬²»¿ÉÔÙ¼Ó»·£¡");
+		puts("è¯¥é“¾è¡¨æœ‰ç¯ï¼Œä¸å¯å†åŠ ç¯ï¼");
 	}
 }
 
-// ÕÒµ½³É»·µÄÄÇ¸öµã
+// æ‰¾åˆ°æˆç¯çš„é‚£ä¸ªç‚¹
 LNode * SearchCircleNode(LinkedList L)
 {
 	LinkedList quick,slow;
@@ -378,7 +378,7 @@ LNode * SearchCircleNode(LinkedList L)
 	return quick;
 }
 
-// ×Ô¼ºµÄÊäÈëº¯Êı
+// è‡ªå·±çš„è¾“å…¥å‡½æ•°
 void s_gets(char * str,int lim)
 {
 	char * ret_val;
@@ -417,7 +417,7 @@ Status num_gets(int * num)
 		}
 		else
 		{
-			puts("ÊäÈëÓĞÎó£¡");
+			puts("è¾“å…¥æœ‰è¯¯ï¼");
 			return ERROR;
 		}
 	}
@@ -431,16 +431,16 @@ void InputPositiveNum(int * num)
 	while(!num_gets(num) || (*num) > 99999999)
 	{
 		if((*num) > 99999999)
-			puts("ÊäÈëÊı¾İ¹ı´ó");
+			puts("è¾“å…¥æ•°æ®è¿‡å¤§");
 		continue;
 	}
 	while((*num) < 1)
 	{
-		puts("ÇëÊäÈëÕıÕûÊı£¡");
+		puts("è¯·è¾“å…¥æ­£æ•´æ•°ï¼");
 		while(!num_gets(num) || (*num) > 99999999)
 		{
 			if((*num) > 99999999)
-				puts("ÊäÈëÊı¾İ¹ı´ó");
+				puts("è¾“å…¥æ•°æ®è¿‡å¤§");
 			continue;
 		}
 	}
@@ -449,7 +449,7 @@ void InputPositiveNum(int * num)
 void Exit()
 {
 	system("pause");
-	puts("\t\t\t¸ĞĞ»Ê¹ÓÃ£¡\n\n\n");
+	puts("\t\t\tæ„Ÿè°¢ä½¿ç”¨ï¼\n\n\n");
 	system("pause");
 	system("cls");
 	for (float y = 1.5; y > -1.5; y -= 0.1)
