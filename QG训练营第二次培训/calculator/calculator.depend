@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1586084056 source:c:\users\аж\desktop\exper\calculator\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<ctype.h>
+	<stdbool.h>
+	"function.h"
+
+1586084057 c:\users\аж\desktop\exper\calculator\function.h
+
