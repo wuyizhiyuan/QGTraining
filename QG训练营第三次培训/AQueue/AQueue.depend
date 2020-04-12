@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1586629073 source:c:\users\аж\desktop\exper\aqueue\aqueue.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"AQueue.h"
+
+1586623892 c:\users\аж\desktop\exper\aqueue\aqueue.h
+
+1586690900 source:c:\users\аж\desktop\exper\aqueue\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"AQueue.h"
+

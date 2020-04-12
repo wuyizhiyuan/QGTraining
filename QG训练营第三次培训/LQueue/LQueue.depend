@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1586690286 source:c:\users\аж\desktop\exper\lqueue\lqueue.c
+	"LQueue.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1586689055 c:\users\аж\desktop\exper\lqueue\lqueue.h
+
+1586690127 source:c:\users\аж\desktop\exper\lqueue\main.c
+	"LQueue.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
