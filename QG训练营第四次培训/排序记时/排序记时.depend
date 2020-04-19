@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1587277492 source:c:\users\林\desktop\exper\排序记时\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"qgsort.h"
+
+1587276732 c:\users\林\desktop\exper\排序记时\qgsort.h
+
+1587276919 source:c:\users\林\desktop\exper\排序记时\qgsort.c
+	"qgsort.h"
+	"LinkStack.h"
+	<stdio.h>
+	<stdlib.h>
+
+1585841611 c:\users\林\desktop\exper\排序记时\linkstack.h
+

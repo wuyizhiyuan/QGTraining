@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1587276732 source:c:\users\аж\desktop\exper\еепР\main.c
+	<stdio.h>
+	<stdlib.h>
+	"qgsort.h"
+
+1587276732 c:\users\аж\desktop\exper\еепР\qgsort.h
+
+1587276919 source:c:\users\аж\desktop\exper\еепР\qgsort.c
+	"qgsort.h"
+	"LinkStack.h"
+	<stdio.h>
+	<stdlib.h>
+
+1585841611 c:\users\аж\desktop\exper\еепР\linkstack.h
+
